@@ -1,23 +1,6 @@
 <!doctype html>
 <html>
-    <head>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <!--->
-            <link rel="stylesheet" href="lib/bootstrap-4.3.1-dist/css/bootstrap.min.css">
-        <---->
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <!--->
-            <script src="lib/jquery-3.4.1.min.js"></script>
-        <---->
-        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-        <!--->
-            <script src="lib/popper.min.js"></script>
-        <---->
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!--->
-            <script src="lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-        <---->
-    </head>
+    {% include 'partials/head.twig' %}
     <body>
         <main class="container-fluid">
             <div class ="row">
@@ -26,11 +9,11 @@
                     <img class ="img-fluid" src="images/products/products/{{product.image}}">
                     <h4 class ="product-name">{{product.name}}</h4>
                     <h6 class ="product-price">{{product.price}}</h6>
-                    <p class ="product-description">{{product.description}}</p>
+                    <p class ="product-description">{{product.description | slice(0,100) ~ '...'}}</p>
+                    <a href="detail.php?product_id={{product.product_id}}">Detail</a>
                 </div>
                 {% endfor %}
             </div>
         </main>
-    <h1>Products</h1>
     </body>
 </html>
