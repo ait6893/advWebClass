@@ -23,10 +23,12 @@ class Product extends Database
         ";
         
         $statement = $this -> connection -> prepare( $query );
-        if( $statement -> execute() ){
+        if( $statement -> execute() )
+        {
             $result = $statement -> get_result();
             $product_array = array();
-            while( $row = $result -> fetch_assoc() ){
+            while( $row = $result -> fetch_assoc() )
+            {
                 array_push( $product_array, $row );
             }
             return $product_array;

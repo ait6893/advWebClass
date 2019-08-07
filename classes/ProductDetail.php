@@ -36,8 +36,8 @@ class ProductDetail extends Product
     private function getProductImages( $id )
     {
         $images_query = "
-        SELECT
-        product_image.image_id
+        SELECT 
+        product_image.image_id,
         image_file_name
         FROM product_image
         INNER JOIN image
