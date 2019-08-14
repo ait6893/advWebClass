@@ -9,8 +9,7 @@ $nav_items = $nav -> getNavigation();
 use aitsydney\ProductDetail;
 
 //get the product id from url parameter
-if( isset( $_GET['product_id'] ) == false )
-{
+if( isset( $_GET['product_id'] ) == false ){
     echo "no parameter set";
     exit();
 }

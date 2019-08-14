@@ -23,15 +23,16 @@ class Navigation extends Database
     }
     private function initSession()
     {
-        if (session_status() == PHP_SESSION_NONE )
+        if( session_status() == PHP_SESSION_NONE )
         {
             session_start();
         }
     }
+
     public function getNavigation()
     {
         $nav_query = "
-            SELECT
+            SELECT 
             name,
             url,
             menu,
@@ -43,9 +44,8 @@ class Navigation extends Database
             ORDER BY menu_order ASC
         ";
         $statement = $this -> connection -> prepare( $nav_query );
-        $statement -> bind_param( 'ii' , $this -> min_level, $this -> max_level );
-        try
-        {
+        $statement -> bind_param( 'ii', $this -> min_level, $this -> max_level );
+        try{
             if( $statement -> execute() == false )
             {
                 throw( new Exception('Query error') );
@@ -53,13 +53,13 @@ class Navigation extends Database
             else
             {
                 $result = $statement -> get_result();
-                $iems = array();
-                while ( $row = $result -> fetch_assoc() )
+                $items = array();
+                while( $row = $result -> fetch_assoc() )
                 {
-                    array_push( $items, $row);
+                    array_push( $items, $row );
                 }
                 $this -> navigation['items'] = $items;
-                $this -> navigation['active'] = basename( $_SERVER['PHP SELF'] );
+                $this -> navigation['active'] = basename( $_SERVER['PHP_SELF'] );
             }
             return $this -> navigation;
         }
@@ -69,6 +69,5 @@ class Navigation extends Database
         }
     }
 }
-
 
 ?>
