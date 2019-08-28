@@ -1,12 +1,9 @@
 <?php
-namespace aitsydney; //first can be capital
-class Database
-{
+namespace aitsydney;
+class Database{
     protected $connection;
-    public function __construct()
-    {
-        //create connection
-        $this -> connection = mysqli_connect('localhost','website','password','data');
+    public function __construct(){
+        $this -> connection = mysqli_connect('localhost','website','password','data2');
     }
 }
 ?>
